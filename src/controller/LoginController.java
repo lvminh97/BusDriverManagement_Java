@@ -20,7 +20,7 @@ public class LoginController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == view.getLoginBtn()) {
 			if(view.getUsernameTf().getText().toString().equals("admin")
-					&& view.getPasswordTf().getText().toString().equals("admin")
+					&& view.getPasswordTf().getPassword().toString().equals("admin")
 			) 
 			{
 				JOptionPane.showMessageDialog(view, "Đăng nhập thành công!");
