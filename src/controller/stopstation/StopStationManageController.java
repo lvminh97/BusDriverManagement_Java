@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
+import controller.HomeController;
 import handler.RouteHandler;
 import handler.StopStationHandler;
 import model.StopStation;
@@ -28,6 +29,7 @@ public class StopStationManageController implements ActionListener, PopupMenuLis
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
+		view.getBackBtn().addActionListener(this);
 	}
 	
 	@Override
@@ -48,6 +50,10 @@ public class StopStationManageController implements ActionListener, PopupMenuLis
 					view.update(stationList);
 				}
 			}
+		}
+		else if(e.getSource() == view.getBackBtn()) {
+			view.dispose();
+			new HomeController();
 		}
 	}
 

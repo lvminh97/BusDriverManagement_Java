@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
+import controller.HomeController;
 import handler.DriverHandler;
 import handler.LicenseHandler;
 import handler.RouteHandler;
@@ -29,6 +30,7 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
+		view.getBackBtn().addActionListener(this);
 	}
 	
 	@Override
@@ -49,6 +51,10 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 					view.update(driverList, RouteHandler.getMap(), LicenseHandler.getMap());
 				}
 			}
+		}
+		else if(e.getSource() == view.getBackBtn()) {
+			view.dispose();
+			new HomeController();
 		}
 	}
 

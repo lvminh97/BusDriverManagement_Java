@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
+import controller.HomeController;
 import handler.LicenseHandler;
 import model.License;
 import view.license.LicenseManageView;
@@ -27,6 +28,7 @@ public class LicenseManageController implements ActionListener, PopupMenuListene
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
+		view.getBackBtn().addActionListener(this);
 	}
 	
 	@Override
@@ -47,6 +49,10 @@ public class LicenseManageController implements ActionListener, PopupMenuListene
 					view.update(licenseList);
 				}
 			}
+		}
+		else if(e.getSource() == view.getBackBtn()) {
+			view.dispose();
+			new HomeController();
 		}
 	}
 

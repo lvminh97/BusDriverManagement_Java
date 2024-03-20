@@ -20,7 +20,7 @@ public class RouteManageView extends JFrame{
 	private static final long serialVersionUID = -6961589024995658110L;
 	
 	private JTextField searchTf;
-	private JButton searchBtn, addRouteBtn;
+	private JButton searchBtn, addRouteBtn, backBtn;
 	private JTable RouteListTable;
 	private DefaultTableModel RouteListModel;
 	private JPopupMenu popup;
@@ -36,11 +36,16 @@ public class RouteManageView extends JFrame{
 		this.setSize(950, 800);
 		this.setLocation(100, 100);
 		
-		JLabel lbl1 = new JLabel("QUẢN LÝ DANH SÁCH BẰNG");
+		JLabel lbl1 = new JLabel("QUẢN LÝ DANH SÁCH TUYẾN XE");
 		lbl1.setFont(new Font(lbl1.getFont().getName(), Font.BOLD, 20));
 		lbl1.setLocation(60, 10);
 		lbl1.setSize(600, 80);
 		this.add(lbl1);
+		
+		this.backBtn = new JButton("Quay lại");
+		this.backBtn.setSize(100, 30);
+		this.backBtn.setLocation(760, 30);
+		this.add(this.backBtn);
 		
 		this.searchTf = new JTextField();
 		this.searchTf.setSize(500, 30);
@@ -125,6 +130,10 @@ public class RouteManageView extends JFrame{
 		return addRouteBtn;
 	}
 	
+	public JButton getBackBtn() {
+		return backBtn;
+	}
+
 	public JPopupMenu getPopup() {
 		return popup;
 	}

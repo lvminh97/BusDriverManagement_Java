@@ -23,7 +23,7 @@ public class DriverManageView extends JFrame{
 	private static final long serialVersionUID = -6961589024995658110L;
 	
 	private JTextField searchTf;
-	private JButton searchBtn, addDriverBtn;
+	private JButton searchBtn, addDriverBtn, backBtn;
 	private JTable driverListTable;
 	private DefaultTableModel driverListModel;
 	private JPopupMenu popup;
@@ -44,6 +44,11 @@ public class DriverManageView extends JFrame{
 		lbl1.setLocation(60, 10);
 		lbl1.setSize(600, 80);
 		this.add(lbl1);
+		
+		this.backBtn = new JButton("Quay lại");
+		this.backBtn.setSize(100, 30);
+		this.backBtn.setLocation(760, 30);
+		this.add(this.backBtn);
 		
 		this.searchTf = new JTextField();
 		this.searchTf.setSize(500, 30);
@@ -132,6 +137,10 @@ public class DriverManageView extends JFrame{
 		return addDriverBtn;
 	}
 	
+	public JButton getBackBtn() {
+		return backBtn;
+	}
+
 	public JPopupMenu getPopup() {
 		return popup;
 	}
