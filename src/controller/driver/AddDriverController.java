@@ -1,4 +1,4 @@
-package controller;
+package controller.driver;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,7 @@ import handler.DriverHandler;
 import handler.LicenseHandler;
 import handler.RouteHandler;
 import model.Driver;
-import view.AddDriverView;
+import view.driver.AddDriverView;
 
 public class AddDriverController implements ActionListener {
 

@@ -1,4 +1,4 @@
-package controller;
+package controller.driver;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import handler.DriverHandler;
 import handler.LicenseHandler;
 import handler.RouteHandler;
 import model.Driver;
-import view.DriverManageView;
+import view.driver.DriverManageView;
 
 public class DriverManageController implements ActionListener, PopupMenuListener {
 

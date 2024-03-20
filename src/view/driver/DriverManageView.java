@@ -1,4 +1,4 @@
-package view;
+package view.driver;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -14,9 +14,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import handler.DriverHandler;
-import handler.LicenseHandler;
-import handler.RouteHandler;
 import model.Driver;
 import model.License;
 import model.Route;

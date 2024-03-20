@@ -1,4 +1,4 @@
-package view;
+package view.driver;
 
 import java.awt.Font;
 
@@ -13,15 +13,15 @@ import handler.RouteHandler;
 import model.License;
 import model.Route;
 
-public class AddDriverView extends JFrame{
+public class EditDriverView extends JFrame{
 	
 	private static final long serialVersionUID = -6961589024995658110L;
 	
 	private JTextField nameTf, phoneTf;
 	private JComboBox<String> routeCb, licenseCb;
-	private JButton addBtn;
+	private JButton updateBtn;
 	
-	public AddDriverView() {
+	public EditDriverView() {
 		this.initialize();
 	}
 	
@@ -30,7 +30,7 @@ public class AddDriverView extends JFrame{
 		this.setSize(600, 450);
 		this.setLocation(400, 200);
 		
-		JLabel lbl1 = new JLabel("THÊM TÀI XẾ");
+		JLabel lbl1 = new JLabel("CẬP NHẬT THÔNG TIN TÀI XẾ");
 		lbl1.setFont(new Font(lbl1.getFont().getName(), Font.BOLD, 20));
 		lbl1.setLocation(60, 10);
 		lbl1.setSize(600, 80);
@@ -82,10 +82,10 @@ public class AddDriverView extends JFrame{
 		this.licenseCb.setLocation(180, 240);
 		this.add(this.licenseCb);
 		
-		this.addBtn = new JButton("Thêm");
-		this.addBtn.setSize(120, 40);
-		this.addBtn.setLocation(240, 300);
-		this.add(this.addBtn);
+		this.updateBtn = new JButton("Cập nhật");
+		this.updateBtn.setSize(120, 40);
+		this.updateBtn.setLocation(240, 300);
+		this.add(this.updateBtn);
 		
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -109,8 +109,8 @@ public class AddDriverView extends JFrame{
 		return licenseCb;
 	}
 
-	public JButton getAddBtn() {
-		return addBtn;
+	public JButton getupdateBtn() {
+		return updateBtn;
 	}
 
 }
