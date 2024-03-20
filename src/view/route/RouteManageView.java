@@ -24,7 +24,7 @@ public class RouteManageView extends JFrame{
 	private JTable RouteListTable;
 	private DefaultTableModel RouteListModel;
 	private JPopupMenu popup;
-	private JMenuItem editMenuItem, deleteMenuItem;
+	private JMenuItem editMenuItem, stationMenuItem, deleteMenuItem;
 	
 	public RouteManageView() {
 		initTableModel();
@@ -79,13 +79,15 @@ public class RouteManageView extends JFrame{
 		this.RouteListTable.setModel(RouteListModel);
 		this.RouteListTable.getColumnModel().getColumn(0).setPreferredWidth(10);
 		this.RouteListTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-		this.RouteListTable.getColumnModel().getColumn(2).setPreferredWidth(300);
+		this.RouteListTable.getColumnModel().getColumn(2).setPreferredWidth(200);
 		scrollPane.setViewportView(this.RouteListTable);
 		
 		this.popup = new JPopupMenu();
 		this.editMenuItem = new JMenuItem("Chỉnh sửa");
+		this.stationMenuItem = new JMenuItem("Các điểm dừng");
 		this.deleteMenuItem = new JMenuItem("Xóa");
 		this.popup.add(this.editMenuItem);
+		this.popup.add(this.stationMenuItem);
 		this.popup.add(this.deleteMenuItem);
 		this.RouteListTable.setComponentPopupMenu(this.popup);
 		
@@ -97,7 +99,7 @@ public class RouteManageView extends JFrame{
 	
 	private void initTableModel() {
 		String[] columns = {
-			"ID", "Tên tuyến", "Mô tả"	
+			"ID", "Tên tuyến", "Mô tả",	
 		};
 		RouteListModel = new DefaultTableModel(columns, 0);
 	}
@@ -140,6 +142,10 @@ public class RouteManageView extends JFrame{
 
 	public JMenuItem getEditMenuItem() {
 		return editMenuItem;
+	}
+	
+	public JMenuItem getStationMenuItem() {
+		return stationMenuItem;
 	}
 
 	public JMenuItem getDeleteMenuItem() {

@@ -27,6 +27,7 @@ public class RouteManageController implements ActionListener, PopupMenuListener 
 		view.getAddRouteBtn().addActionListener(this);
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
+		view.getStationMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
 	}
@@ -49,6 +50,9 @@ public class RouteManageController implements ActionListener, PopupMenuListener 
 					view.update(routeList);
 				}
 			}
+		}
+		else if(e.getSource() == view.getStationMenuItem()) {
+			new StationByRouteManageController(routeList.get(rowAtPoint));
 		}
 		else if(e.getSource() == view.getBackBtn()) {
 			view.dispose();

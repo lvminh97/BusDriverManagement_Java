@@ -91,4 +91,27 @@ public class StopStationHandler {
 		
 		return check;
 	}
+	
+	public static ArrayList<StopStation> getListByRoute(int id) {
+		ArrayList<StopStation> res = new ArrayList<StopStation>();
+		Connection conn = DatabaseHandler.getConnection();
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT stop_station.id,stop_station.name,stop_station.address FROM route JOIN stop_station JOIN route_map_stopstation "
+					+ "ON route.id=" + id + " AND route.id=route_map_stopstation.route_id AND "
+					+ "stop_station.id=route_map_stopstation.stop_station_id "
+					+ "ORDER BY stop_station.id");
+			while(rs.next()) {
+				res.add(new StopStation(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 }

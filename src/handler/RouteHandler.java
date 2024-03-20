@@ -91,4 +91,39 @@ public class RouteHandler {
 		
 		return check;
 	}
+	
+	public static boolean addStation(int routeId, int stationId) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("INSERT INTO route_map_stopstation (route_id,stop_station_id) VALUES (%d,%d)", 
+					routeId, stationId));
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+	
+	public static boolean deleteStation(int routeId, int stationId) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("DELETE FROM route_map_stopstation WHERE route_id=%d AND stop_station_id=%d", 
+					routeId, stationId));
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+
 }
