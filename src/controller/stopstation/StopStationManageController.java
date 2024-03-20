@@ -1,4 +1,4 @@
-package controller.driver;
+package controller.stopstation;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -10,22 +10,21 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 
-import handler.DriverHandler;
-import handler.LicenseHandler;
 import handler.RouteHandler;
-import model.Driver;
-import view.driver.DriverManageView;
+import handler.StopStationHandler;
+import model.StopStation;
+import view.stopstation.StopStationManageView;
 
-public class DriverManageController implements ActionListener, PopupMenuListener {
+public class StopStationManageController implements ActionListener, PopupMenuListener {
 
-	private static DriverManageView view;
-	private static ArrayList<Driver> driverList;
+	private static StopStationManageView view;
+	private static ArrayList<StopStation> stationList;
 	private int rowAtPoint = 0;
 	
-	public DriverManageController() {
-		view = new DriverManageView();
+	public StopStationManageController() {
+		view = new StopStationManageView();
 		updateTable();
-		view.getAddDriverBtn().addActionListener(this);
+		view.getAddStopStationBtn().addActionListener(this);
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
@@ -33,28 +32,28 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == view.getAddDriverBtn()) {
-			new AddDriverController();
+		if(e.getSource() == view.getAddStopStationBtn()) {
+			new AddStopStationController();
 		}
 		else if(e.getSource() == view.getEditMenuItem()) {
-			new EditDriverController(driverList.get(rowAtPoint));
+			new EditStopStationController(stationList.get(rowAtPoint));
 		}
 		else if(e.getSource() == view.getDeleteMenuItem()) {
-			int cf = JOptionPane.showConfirmDialog(view, "Bạn có chắc muốn xóa tài xế này?", "Cảnh báo",
+			int cf = JOptionPane.showConfirmDialog(view, "Bạn có chắc muốn xóa điểm dừng này?", "Cảnh báo",
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 			if(cf == JOptionPane.YES_OPTION) {
-				if(DriverHandler.delete(driverList.get(rowAtPoint).getId())) {
-					driverList = DriverHandler.getList();
-					view.update(driverList, RouteHandler.getMap(), LicenseHandler.getMap());
+				if(RouteHandler.delete(stationList.get(rowAtPoint).getId())) {
+					stationList = StopStationHandler.getList();
+					view.update(stationList);
 				}
 			}
 		}
 	}
 
 	public static void updateTable() {
-		driverList = DriverHandler.getList();
-		view.update(driverList, RouteHandler.getMap(), LicenseHandler.getMap());
+		stationList = StopStationHandler.getList();
+		view.update(stationList);
 	}
 
 	@Override
@@ -64,10 +63,10 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				rowAtPoint = view.getDriverListTable().rowAtPoint(SwingUtilities.convertPoint(
-						view.getPopup(), new Point(0, 0), view.getDriverListTable()));
+				rowAtPoint = view.getstopStationListTable().rowAtPoint(SwingUtilities.convertPoint(
+						view.getPopup(), new Point(0, 0), view.getstopStationListTable()));
 				if(rowAtPoint > -1) {
-					view.getDriverListTable().setRowSelectionInterval(rowAtPoint, rowAtPoint);
+					view.getstopStationListTable().setRowSelectionInterval(rowAtPoint, rowAtPoint);
 				}
 			}
 		});

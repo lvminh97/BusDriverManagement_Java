@@ -44,7 +44,7 @@ public class LicenseManageController implements ActionListener, PopupMenuListene
 			if(cf == JOptionPane.YES_OPTION) {
 				if(LicenseHandler.delete(licenseList.get(rowAtPoint).getId())) {
 					licenseList = LicenseHandler.getList();
-					view.update(LicenseHandler.getList());
+					view.update(licenseList);
 				}
 			}
 		}
@@ -52,7 +52,7 @@ public class LicenseManageController implements ActionListener, PopupMenuListene
 
 	public static void updateTable() {
 		licenseList = LicenseHandler.getList();
-		view.update(LicenseHandler.getList());
+		view.update(licenseList);
 	}
 
 	@Override

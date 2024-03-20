@@ -17,7 +17,7 @@ import view.route.RouteManageView;
 public class RouteManageController implements ActionListener, PopupMenuListener {
 
 	private static RouteManageView view;
-	private static ArrayList<Route> licenseList;
+	private static ArrayList<Route> routeList;
 	private int rowAtPoint = 0;
 	
 	public RouteManageController() {
@@ -35,24 +35,24 @@ public class RouteManageController implements ActionListener, PopupMenuListener 
 			new AddRouteController();
 		}
 		else if(e.getSource() == view.getEditMenuItem()) {
-			new EditRouteController(licenseList.get(rowAtPoint));
+			new EditRouteController(routeList.get(rowAtPoint));
 		}
 		else if(e.getSource() == view.getDeleteMenuItem()) {
-			int cf = JOptionPane.showConfirmDialog(view, "Bạn có chắc muốn xóa bằng này?", "Cảnh báo",
+			int cf = JOptionPane.showConfirmDialog(view, "Bạn có chắc muốn xóa tuyến xe này?", "Cảnh báo",
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 			if(cf == JOptionPane.YES_OPTION) {
-				if(RouteHandler.delete(licenseList.get(rowAtPoint).getId())) {
-					licenseList = RouteHandler.getList();
-					view.update(RouteHandler.getList());
+				if(RouteHandler.delete(routeList.get(rowAtPoint).getId())) {
+					routeList = RouteHandler.getList();
+					view.update(routeList);
 				}
 			}
 		}
 	}
 
 	public static void updateTable() {
-		licenseList = RouteHandler.getList();
-		view.update(RouteHandler.getList());
+		routeList = RouteHandler.getList();
+		view.update(routeList);
 	}
 
 	@Override

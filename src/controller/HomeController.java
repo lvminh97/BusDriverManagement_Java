@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import controller.driver.DriverManageController;
 import controller.license.LicenseManageController;
 import controller.route.RouteManageController;
+import controller.stopstation.StopStationManageController;
 import view.HomeView;
 
 public class HomeController implements ActionListener {
@@ -31,7 +32,8 @@ public class HomeController implements ActionListener {
 			new RouteManageController();
 		}
 		else if(e.getSource() == view.getStopStationManageButton()) {
-			
+			view.dispose();
+			new StopStationManageController();
 		}
 		else if(e.getSource() == view.getLicenseManageButton()) {
 			view.dispose();
