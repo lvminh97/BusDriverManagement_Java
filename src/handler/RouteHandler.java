@@ -36,4 +36,59 @@ public class RouteHandler {
 		}
 		return map;
 	}
+	
+	public static boolean add(Route route) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("INSERT INTO route (name,description) VALUES "
+					+ "('%s','%s')", 
+					route.getName(), route.getDescription())
+			);
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+	
+	public static boolean delete(int id) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("DELETE FROM route WHERE id=%d", id));
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+
+	public static boolean update(Route route) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("UPDATE route SET name='%s',description='%s' WHERE id=%d",
+					route.getName(),
+					route.getDescription(),
+					route.getId())
+			);
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 }

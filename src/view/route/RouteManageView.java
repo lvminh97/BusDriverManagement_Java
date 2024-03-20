@@ -1,4 +1,4 @@
-package view.license;
+package view.route;
 
 import java.awt.Font;
 import java.util.ArrayList;
@@ -13,20 +13,20 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import model.License;
+import model.Route;
 
-public class LicenseManageView extends JFrame{
+public class RouteManageView extends JFrame{
 	
 	private static final long serialVersionUID = -6961589024995658110L;
 	
 	private JTextField searchTf;
-	private JButton searchBtn, addLicenseBtn;
-	private JTable LicenseListTable;
-	private DefaultTableModel LicenseListModel;
+	private JButton searchBtn, addRouteBtn;
+	private JTable RouteListTable;
+	private DefaultTableModel RouteListModel;
 	private JPopupMenu popup;
 	private JMenuItem editMenuItem, deleteMenuItem;
 	
-	public LicenseManageView() {
+	public RouteManageView() {
 		initTableModel();
 		this.initialize();
 	}
@@ -52,37 +52,37 @@ public class LicenseManageView extends JFrame{
 		this.searchBtn.setLocation(580, 120);
 		this.add(this.searchBtn);
 		
-		this.addLicenseBtn = new JButton("Thêm bằng");
-		this.addLicenseBtn.setSize(150, 30);
-		this.addLicenseBtn.setLocation(710, 120);
-		this.add(this.addLicenseBtn);
+		this.addRouteBtn = new JButton("Thêm tuyến");
+		this.addRouteBtn.setSize(150, 30);
+		this.addRouteBtn.setLocation(710, 120);
+		this.add(this.addRouteBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setSize(800, 520);
 		scrollPane.setLocation(60, 200);
 		this.add(scrollPane);
 		
-		this.LicenseListTable = new JTable() {
+		this.RouteListTable = new JTable() {
 			private static final long serialVersionUID = 1L;
 
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
-		this.LicenseListTable.setSize(800, 520);
-		this.LicenseListTable.setLocation(60, 230);
-		this.LicenseListTable.setModel(LicenseListModel);
-		this.LicenseListTable.getColumnModel().getColumn(0).setPreferredWidth(10);
-		this.LicenseListTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-		this.LicenseListTable.getColumnModel().getColumn(2).setPreferredWidth(100);
-		scrollPane.setViewportView(this.LicenseListTable);
+		this.RouteListTable.setSize(800, 520);
+		this.RouteListTable.setLocation(60, 230);
+		this.RouteListTable.setModel(RouteListModel);
+		this.RouteListTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+		this.RouteListTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+		this.RouteListTable.getColumnModel().getColumn(2).setPreferredWidth(300);
+		scrollPane.setViewportView(this.RouteListTable);
 		
 		this.popup = new JPopupMenu();
 		this.editMenuItem = new JMenuItem("Chỉnh sửa");
 		this.deleteMenuItem = new JMenuItem("Xóa");
 		this.popup.add(this.editMenuItem);
 		this.popup.add(this.deleteMenuItem);
-		this.LicenseListTable.setComponentPopupMenu(this.popup);
+		this.RouteListTable.setComponentPopupMenu(this.popup);
 		
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -92,37 +92,37 @@ public class LicenseManageView extends JFrame{
 	
 	private void initTableModel() {
 		String[] columns = {
-			"ID", "Tên bằng", "Trình độ"	
+			"ID", "Tên tuyến", "Mô tả"	
 		};
-		LicenseListModel = new DefaultTableModel(columns, 0);
+		RouteListModel = new DefaultTableModel(columns, 0);
 	}
 	
-	public void update(ArrayList<License> LicenseList) {
-		LicenseListModel.setRowCount(0);
+	public void update(ArrayList<Route> routeList) {
+		RouteListModel.setRowCount(0);
 		
-		for(License item: LicenseList) {
-			LicenseListModel.addRow(new Object[] {
+		for(Route item: routeList) {
+			RouteListModel.addRow(new Object[] {
 				item.getId(), 
 				item.getName(),
-				item.getLevel()
+				item.getDescription()
 			});
 		}
 	}
 	
-	public JTable getLicenseListTable() {
-		return LicenseListTable;
+	public JTable getRouteListTable() {
+		return RouteListTable;
 	}
 
-	public DefaultTableModel getLicenseListModel() {
-		return LicenseListModel;
+	public DefaultTableModel getRouteListModel() {
+		return RouteListModel;
 	}
 
-	public void setLicenseListModel(DefaultTableModel LicenseListModel) {
-		this.LicenseListModel = LicenseListModel;
+	public void setRouteListModel(DefaultTableModel RouteListModel) {
+		this.RouteListModel = RouteListModel;
 	}
 
-	public JButton getAddLicenseBtn() {
-		return addLicenseBtn;
+	public JButton getAddRouteBtn() {
+		return addRouteBtn;
 	}
 	
 	public JPopupMenu getPopup() {
