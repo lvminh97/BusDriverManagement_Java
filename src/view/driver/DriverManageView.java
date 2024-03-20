@@ -132,11 +132,19 @@ public class DriverManageView extends JFrame{
 	public void setDriverListModel(DefaultTableModel driverListModel) {
 		this.driverListModel = driverListModel;
 	}
+	
+	public JTextField getSearchTf() {
+		return searchTf;
+	}
 
 	public JButton getAddDriverBtn() {
 		return addDriverBtn;
 	}
 	
+	public JButton getSearchBtn() {
+		return searchBtn;
+	}
+
 	public JButton getBackBtn() {
 		return backBtn;
 	}

@@ -29,6 +29,7 @@ public class RouteManageController implements ActionListener, PopupMenuListener 
 		view.getEditMenuItem().addActionListener(this);
 		view.getStationMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
+		view.getSearchBtn().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
 	}
 	
@@ -36,6 +37,10 @@ public class RouteManageController implements ActionListener, PopupMenuListener 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == view.getAddRouteBtn()) {
 			new AddRouteController();
+		}
+		else if(e.getSource() == view.getSearchBtn()) {
+			routeList = RouteHandler.search(view.getSearchTf().getText());
+			view.update(routeList);
 		}
 		else if(e.getSource() == view.getEditMenuItem()) {
 			new EditRouteController(routeList.get(rowAtPoint));

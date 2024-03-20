@@ -29,6 +29,7 @@ public class StopStationManageController implements ActionListener, PopupMenuLis
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
+		view.getSearchBtn().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
 	}
 	
@@ -50,6 +51,10 @@ public class StopStationManageController implements ActionListener, PopupMenuLis
 					view.update(stationList);
 				}
 			}
+		}
+		else if(e.getSource() == view.getSearchBtn()) {
+			stationList = StopStationHandler.search(view.getSearchTf().getText());
+			view.update(stationList);
 		}
 		else if(e.getSource() == view.getBackBtn()) {
 			view.dispose();

@@ -116,6 +116,10 @@ public class RouteManageView extends JFrame{
 		}
 	}
 	
+	public JTextField getSearchTf() {
+		return searchTf;
+	}
+
 	public JTable getRouteListTable() {
 		return RouteListTable;
 	}
@@ -132,6 +136,10 @@ public class RouteManageView extends JFrame{
 		return addRouteBtn;
 	}
 	
+	public JButton getSearchBtn() {
+		return searchBtn;
+	}
+
 	public JButton getBackBtn() {
 		return backBtn;
 	}

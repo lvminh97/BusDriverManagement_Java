@@ -31,6 +31,7 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 		view.getEditMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
+		view.getSearchBtn().addActionListener(this);
 	}
 	
 	@Override
@@ -51,6 +52,10 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 					view.update(driverList, RouteHandler.getMap(), LicenseHandler.getMap());
 				}
 			}
+		}
+		else if(e.getSource() == view.getSearchBtn()) {
+			driverList = DriverHandler.search(view.getSearchTf().getText());
+			view.update(driverList, RouteHandler.getMap(), LicenseHandler.getMap());
 		}
 		else if(e.getSource() == view.getBackBtn()) {
 			view.dispose();

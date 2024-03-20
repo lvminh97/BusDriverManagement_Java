@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.Route;
 import model.StopStation;
 
 public class StopStationHandler {
@@ -114,4 +115,28 @@ public class StopStationHandler {
 		return res;
 	}
 
+	public static ArrayList<StopStation> search(String keyword) {
+		ArrayList<StopStation> res = new ArrayList<StopStation>();
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(
+				String.format("SELECT * FROM stop_station WHERE name LIKE '%%%s%%' OR address LIKE '%%%s%%' ORDER BY id",
+						keyword, keyword)
+			);
+			while(rs.next()) {
+				StopStation item = new StopStation(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3)
+				);
+				res.add(item);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
 }

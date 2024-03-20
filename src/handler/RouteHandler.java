@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.Driver;
 import model.Route;
 
 public class RouteHandler {
@@ -125,5 +126,28 @@ public class RouteHandler {
 		
 		return check;
 	}
-
+	
+	public static ArrayList<Route> search(String keyword) {
+		ArrayList<Route> res = new ArrayList<Route>();
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(
+				String.format("SELECT * FROM route WHERE name LIKE '%%%s%%' OR description LIKE '%%%s%%' ORDER BY id",
+						keyword, keyword)
+			);
+			while(rs.next()) {
+				Route item = new Route(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3)
+				);
+				res.add(item);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 }

@@ -19,8 +19,7 @@ public class LicenseManageView extends JFrame{
 	
 	private static final long serialVersionUID = -6961589024995658110L;
 	
-	private JTextField searchTf;
-	private JButton searchBtn, addLicenseBtn, backBtn;
+	private JButton addLicenseBtn, backBtn;
 	private JTable LicenseListTable;
 	private DefaultTableModel LicenseListModel;
 	private JPopupMenu popup;
@@ -47,19 +46,9 @@ public class LicenseManageView extends JFrame{
 		this.backBtn.setLocation(760, 30);
 		this.add(this.backBtn);
 		
-		this.searchTf = new JTextField();
-		this.searchTf.setSize(500, 30);
-		this.searchTf.setLocation(60, 120);
-		this.add(this.searchTf);
-		
-		this.searchBtn = new JButton("Tìm kiếm");
-		this.searchBtn.setSize(100, 30);
-		this.searchBtn.setLocation(580, 120);
-		this.add(this.searchBtn);
-		
 		this.addLicenseBtn = new JButton("Thêm bằng");
 		this.addLicenseBtn.setSize(150, 30);
-		this.addLicenseBtn.setLocation(710, 120);
+		this.addLicenseBtn.setLocation(60, 120);
 		this.add(this.addLicenseBtn);
 		
 		JScrollPane scrollPane = new JScrollPane();

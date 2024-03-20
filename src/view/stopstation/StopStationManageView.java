@@ -114,6 +114,10 @@ public class StopStationManageView extends JFrame{
 		}
 	}
 	
+	public JTextField getSearchTf() {
+		return searchTf;
+	}
+
 	public JTable getstopStationListTable() {
 		return stopStationListTable;
 	}
@@ -130,6 +134,10 @@ public class StopStationManageView extends JFrame{
 		return addStopStationBtn;
 	}
 	
+	public JButton getSearchBtn() {
+		return searchBtn;
+	}
+
 	public JButton getBackBtn() {
 		return backBtn;
 	}
