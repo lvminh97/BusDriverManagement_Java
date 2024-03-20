@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.Route;
 import model.StopStation;
 
 public class StopStationHandler {
