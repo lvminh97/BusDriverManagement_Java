@@ -36,4 +36,59 @@ public class LicenseHandler {
 		}
 		return map;
 	}
+	
+	public static boolean add(License license) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("INSERT INTO license (name,level) VALUES "
+					+ "('%s',%d)", 
+					license.getName(), license.getLevel())
+			);
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+	
+	public static boolean delete(int id) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("DELETE FROM license WHERE id=%d", id));
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
+
+	public static boolean update(License license) {
+		boolean check = true;
+		
+		Connection conn = DatabaseHandler.getConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(String.format("UPDATE license SET name='%s',level=%d WHERE id=%d",
+					license.getName(),
+					license.getLevel(),
+					license.getId())
+			);
+
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 }
