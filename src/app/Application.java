@@ -1,11 +1,14 @@
 package app;
 
-import controller.LoginController;
+import controller.HomeController;
+import handler.DatabaseHandler;
 
 public class Application {
 
 	public static void main(String[] args) {
-		new LoginController();
+		DatabaseHandler.initialize();
+//		new LoginController();
+		new HomeController();
 	}
 	
 }

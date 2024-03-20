@@ -21,32 +21,32 @@ public class LoginView extends JFrame {
 	
 	private void initialize() {
 		this.setTitle("Phần mềm quản lý lái xe bus");
-		this.setSize(800, 600);
+		this.setSize(600, 400);
 		this.setLocation(400, 200);
 		
 		this.usernameLbl = new JLabel("Tên đăng nhập");
 		this.usernameLbl.setSize(100, 30);
-		this.usernameLbl.setLocation(200, 150);
+		this.usernameLbl.setLocation(100, 100);
 		this.add(this.usernameLbl);
 		
 		this.passwordLbl = new JLabel("Mật khẩu");
 		this.passwordLbl.setSize(100, 30);
-		this.passwordLbl.setLocation(200, 210);
+		this.passwordLbl.setLocation(100, 160);
 		this.add(this.passwordLbl);
 		
 		this.usernameTf = new JTextField();
 		this.usernameTf.setSize(250, 30);
-		this.usernameTf.setLocation(300, 150);
+		this.usernameTf.setLocation(200, 100);
 		this.add(this.usernameTf);
 		
 		this.passwordTf = new JPasswordField();
 		this.passwordTf.setSize(250, 30);
-		this.passwordTf.setLocation(300, 210);
+		this.passwordTf.setLocation(200, 160);
 		this.add(this.passwordTf);
 		
 		this.loginBtn = new JButton("Đăng nhập");
 		this.loginBtn.setSize(120, 40);
-		this.loginBtn.setLocation(350, 280);
+		this.loginBtn.setLocation(250, 230);
 		this.add(this.loginBtn);
 		
 		this.setLayout(null);
@@ -55,44 +55,16 @@ public class LoginView extends JFrame {
 		this.setResizable(false);
 	}
 
-	public JLabel getUsernameLbl() {
-		return usernameLbl;
-	}
-
-	public void setUsernameLbl(JLabel usernameLbl) {
-		this.usernameLbl = usernameLbl;
-	}
-
-	public JLabel getPasswordLbl() {
-		return passwordLbl;
-	}
-
-	public void setPasswordLbl(JLabel passwordLbl) {
-		this.passwordLbl = passwordLbl;
-	}
-
 	public JTextField getUsernameTf() {
 		return usernameTf;
-	}
-
-	public void setUsernameTf(JTextField usernameTf) {
-		this.usernameTf = usernameTf;
 	}
 
 	public JPasswordField getPasswordTf() {
 		return passwordTf;
 	}
 
-	public void setPasswordTf(JPasswordField passwordTf) {
-		this.passwordTf = passwordTf;
-	}
-
 	public JButton getLoginBtn() {
 		return loginBtn;
 	}
 
-	public void setLoginBtn(JButton loginBtn) {
-		this.loginBtn = loginBtn;
-	}
-	
 }
