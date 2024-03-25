@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 20, 2024 at 09:44 PM
+-- Generation Time: Mar 26, 2024 at 12:56 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -52,7 +52,6 @@ CREATE TABLE `driver` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `route_id` int(11) NOT NULL DEFAULT 0,
   `license_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,12 +59,34 @@ CREATE TABLE `driver` (
 -- Dumping data for table `driver`
 --
 
-INSERT INTO `driver` (`id`, `name`, `phone`, `route_id`, `license_id`) VALUES
-(1, 'Nguyễn Văn An', '0912345678', 1, 2),
-(2, 'Trần Tuấn Sơn', '0912445678', 3, 3),
-(3, 'Phạm Tấn Tài', '0134', 1, 1),
-(6, 'Lương Văn Bình', '012345', 2, 2),
-(14, 'Vương Văn Nam', '01929292', 4, 2);
+INSERT INTO `driver` (`id`, `name`, `phone`, `license_id`) VALUES
+(1, 'Nguyễn Văn An', '0912345678', 2),
+(2, 'Trần Tuấn Sơn', '0912445678', 3),
+(3, 'Phạm Tấn Tài', '0341082351', 1),
+(6, 'Lương Văn Bình', '012345', 2),
+(14, 'Vương Văn Nam', '01929292', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `driver_map_route`
+--
+
+CREATE TABLE `driver_map_route` (
+  `driver_id` int(11) NOT NULL,
+  `route_id` int(11) NOT NULL,
+  `turn_number` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `driver_map_route`
+--
+
+INSERT INTO `driver_map_route` (`driver_id`, `route_id`, `turn_number`) VALUES
+(1, 1, 6),
+(1, 4, 7),
+(2, 1, 3),
+(3, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -130,8 +151,7 @@ CREATE TABLE `route_map_stopstation` (
 INSERT INTO `route_map_stopstation` (`route_id`, `stop_station_id`) VALUES
 (1, 1),
 (1, 2),
-(1, 3),
-(2, 1);
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -170,7 +190,14 @@ ALTER TABLE `auth`
 ALTER TABLE `driver`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_2` (`id`),
-  ADD KEY `id` (`id`,`route_id`,`license_id`);
+  ADD KEY `id` (`id`,`license_id`);
+
+--
+-- Indexes for table `driver_map_route`
+--
+ALTER TABLE `driver_map_route`
+  ADD PRIMARY KEY (`driver_id`,`route_id`),
+  ADD KEY `driver_id` (`driver_id`,`route_id`);
 
 --
 -- Indexes for table `license`

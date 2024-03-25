@@ -19,7 +19,6 @@ public class EditDriverController implements ActionListener {
 		this.driver = driver;
 		view.getNameTf().setText(driver.getName());
 		view.getPhoneTf().setText(driver.getPhone());
-		view.getRouteCb().setSelectedIndex(RouteHandler.getList().stream().map(x -> x.getId()).toList().indexOf(driver.getRouteId()));
 		view.getLicenseCb().setSelectedIndex(LicenseHandler.getList().stream().map(x -> x.getId()).toList().indexOf(driver.getLicenseId()));
 		view.getupdateBtn().addActionListener(this);
 	}
@@ -29,7 +28,6 @@ public class EditDriverController implements ActionListener {
 		if(e.getSource() == view.getupdateBtn()) {
 			this.driver.setName(view.getNameTf().getText());
 			this.driver.setPhone(view.getPhoneTf().getText());
-			this.driver.setRouteId(RouteHandler.getList().get(view.getRouteCb().getSelectedIndex()).getId());
 			this.driver.setLicense(LicenseHandler.getList().get(view.getLicenseCb().getSelectedIndex()).getId());
 			if(DriverHandler.update(this.driver)) {
 				view.dispose();

@@ -5,6 +5,7 @@ public class Route {
 	private int id;
 	private String name;
 	private String description;
+	private int turnNumber;
 	
 	public Route(int id, String name, String description) {
 		this.id = id;
@@ -29,6 +30,12 @@ public class Route {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getTurnNumber() {
+		return turnNumber;
+	}
+	public void setTurnNumber(int turnNumber) {
+		this.turnNumber = turnNumber;
 	}
 	
 }

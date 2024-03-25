@@ -24,7 +24,6 @@ public class AddDriverController implements ActionListener {
 			Driver driver = new Driver(0,
 					view.getNameTf().getText(),
 					view.getPhoneTf().getText(),
-					RouteHandler.getList().get(view.getRouteCb().getSelectedIndex()).getId(),
 					LicenseHandler.getList().get(view.getLicenseCb().getSelectedIndex()).getId());
 			if(DriverHandler.add(driver)) {
 				view.dispose();

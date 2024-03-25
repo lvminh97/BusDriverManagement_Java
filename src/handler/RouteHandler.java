@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.Route;
+import model.StopStation;
 
 public class RouteHandler {
 
@@ -147,6 +148,29 @@ public class RouteHandler {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return res;
+	}
+	
+	public static ArrayList<Route> getListByDriver(int id) {
+		ArrayList<Route> res = new ArrayList<Route>();
+		Connection conn = DatabaseHandler.getConnection();
+		
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT route.id,route.name,route.description,driver_map_route.turn_number FROM route JOIN driver_map_route "
+					+ "ON driver_map_route.driver_id=" + id + " AND route.id=driver_map_route.route_id "
+					+ "ORDER BY route.id");
+			while(rs.next()) {
+				Route route = new Route(rs.getInt(1), rs.getString(2), rs.getString(3));
+				route.setTurnNumber(rs.getInt(4));
+				res.add(route);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return res;
 	}
 }

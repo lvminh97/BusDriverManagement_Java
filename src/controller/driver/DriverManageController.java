@@ -29,6 +29,7 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 		view.getAddDriverBtn().addActionListener(this);
 		view.getPopup().addPopupMenuListener(this);
 		view.getEditMenuItem().addActionListener(this);
+		view.getRouteMenuItem().addActionListener(this);
 		view.getDeleteMenuItem().addActionListener(this);
 		view.getBackBtn().addActionListener(this);
 		view.getSearchBtn().addActionListener(this);
@@ -41,6 +42,9 @@ public class DriverManageController implements ActionListener, PopupMenuListener
 		}
 		else if(e.getSource() == view.getEditMenuItem()) {
 			new EditDriverController(driverList.get(rowAtPoint));
+		}
+		else if(e.getSource() == view.getRouteMenuItem()) {
+			new RouteByDriverManageController(driverList.get(rowAtPoint));
 		}
 		else if(e.getSource() == view.getDeleteMenuItem()) {
 			int cf = JOptionPane.showConfirmDialog(view, "Bạn có chắc muốn xóa tài xế này?", "Cảnh báo",

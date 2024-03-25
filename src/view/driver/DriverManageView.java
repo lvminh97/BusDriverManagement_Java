@@ -27,7 +27,7 @@ public class DriverManageView extends JFrame{
 	private JTable driverListTable;
 	private DefaultTableModel driverListModel;
 	private JPopupMenu popup;
-	private JMenuItem editMenuItem, deleteMenuItem;
+	private JMenuItem editMenuItem, deleteMenuItem, routeMenuItem;
 	
 	public DriverManageView() {
 		initTableModel();
@@ -84,13 +84,14 @@ public class DriverManageView extends JFrame{
 		this.driverListTable.getColumnModel().getColumn(1).setPreferredWidth(200);
 		this.driverListTable.getColumnModel().getColumn(2).setPreferredWidth(50);
 		this.driverListTable.getColumnModel().getColumn(3).setPreferredWidth(50);
-		this.driverListTable.getColumnModel().getColumn(4).setPreferredWidth(50);
 		scrollPane.setViewportView(this.driverListTable);
 		
 		this.popup = new JPopupMenu();
 		this.editMenuItem = new JMenuItem("Chỉnh sửa");
+		this.routeMenuItem = new JMenuItem("Phân công tuyến");
 		this.deleteMenuItem = new JMenuItem("Xóa");
 		this.popup.add(this.editMenuItem);
+		this.popup.add(this.routeMenuItem);
 		this.popup.add(this.deleteMenuItem);
 		this.driverListTable.setComponentPopupMenu(this.popup);
 		
@@ -102,7 +103,7 @@ public class DriverManageView extends JFrame{
 	
 	private void initTableModel() {
 		String[] columns = {
-			"ID", "Họ tên", "Số điện thoại", "Tuyến xe", "Bằng lái xe"	
+			"ID", "Họ tên", "Số điện thoại", "Bằng lái xe"	
 		};
 		driverListModel = new DefaultTableModel(columns, 0);
 	}
@@ -115,7 +116,6 @@ public class DriverManageView extends JFrame{
 				item.getId(), 
 				item.getName(), 
 				item.getPhone(), 
-				routeMap.get(item.getRouteId()).getName(), 
 				licenseMap.get(item.getLicenseId()).getName()
 			});
 		}
@@ -155,6 +155,10 @@ public class DriverManageView extends JFrame{
 
 	public JMenuItem getEditMenuItem() {
 		return editMenuItem;
+	}
+	
+	public JMenuItem getRouteMenuItem() {
+		return routeMenuItem;
 	}
 
 	public JMenuItem getDeleteMenuItem() {

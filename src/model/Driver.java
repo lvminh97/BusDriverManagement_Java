@@ -4,14 +4,12 @@ public class Driver {
 	private int id;
 	private String name;
 	private String phone;
-	private int routeId;
 	private int licenseId;
 	
-	public Driver(int id, String name, String phone, int routeId, int licenseId) {
+	public Driver(int id, String name, String phone, int licenseId) {
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
-		this.routeId = routeId;
 		this.licenseId = licenseId;
 	}
 	
@@ -32,14 +30,6 @@ public class Driver {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public int getRouteId() {
-		return routeId;
-	}
-
-	public void setRouteId(int routeId) {
-		this.routeId = routeId;
 	}
 
 	public int getLicenseId() {
