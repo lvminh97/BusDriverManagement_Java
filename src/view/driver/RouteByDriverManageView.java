@@ -16,10 +16,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
 import handler.RouteHandler;
-import handler.StopStationHandler;
 import model.Driver;
 import model.Route;
-import model.StopStation;
 
 public class RouteByDriverManageView extends JFrame{
 	
