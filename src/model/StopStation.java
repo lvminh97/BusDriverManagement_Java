@@ -4,7 +4,14 @@ public class StopStation {
 	
 	private int id;
 	private String name;
-	private String description;
+	private String address;
+	
+	public StopStation(int id, String name, String address) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+	}
 	
 	public int getId() {
 		return id;
@@ -18,11 +25,11 @@ public class StopStation {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+	public String getAddress() {
+		return address;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 }

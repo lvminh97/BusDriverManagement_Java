@@ -6,6 +6,12 @@ public class License {
 	private String name;
 	private int level;
 	
+	public License(int id, String name, int level) {
+		this.id = id;
+		this.name = name;
+		this.level = level;
+	}
+	
 	public int getId() {
 		return id;
 	}

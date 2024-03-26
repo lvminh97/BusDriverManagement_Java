@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import handler.AuthHandler;
+import model.Auth;
 import view.LoginView;
 
 public class LoginController implements ActionListener {
@@ -19,11 +21,13 @@ public class LoginController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == view.getLoginBtn()) {
-			if(view.getUsernameTf().getText().toString().equals("admin")
-					&& view.getPasswordTf().getPassword().toString().equals("admin")
-			) 
-			{
-				JOptionPane.showMessageDialog(view, "Đăng nhập thành công!");
+			Auth auth = new Auth(view.getUsernameTf().getText().toString(),
+					new String(view.getPasswordTf().getPassword()));
+			
+			if(AuthHandler.login(auth)) {
+//				JOptionPane.showMessageDialog(view, "Đăng nhập thành công!");
+				view.dispose();
+				new HomeController();
 			}
 			else {
 				JOptionPane.showMessageDialog(view, "Sai tên đăng nhập hoặc mật khẩu!");
